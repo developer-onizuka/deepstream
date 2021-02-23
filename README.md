@@ -52,4 +52,4 @@
  root@db8c980a463f:/opt/nvidia/deepstream/deepstream-5.0# deepstream-app -c samples/configs/deepstream-app/source1_usb_dec_infer_resnet_int8.txt
 ```
 
- Web camera runs which runs at /dev/video0 and you can see yourself!!!
+ You can see yourself through Web camera running at /dev/video0 and !!!
