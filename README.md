@@ -3,9 +3,13 @@
  $ sudo apt install docker.io
 ```
 
-# 2. docker hello world
+# 2. run hello world in docker
 ```
  $ sudo docker pull hello-world
+ $ sudo docker images
+ REPOSITORY                           TAG                  IMAGE ID            CREATED             SIZE
+ hello-world                          latest               bf756fb1ae65        13 months ago       13.3kB
+ $ sudo docker run hello-world:latest
  Hello from Docker!
  This message shows that your installation appears to be working correctly.
 
@@ -27,7 +31,7 @@
  For more examples and ideas, visit:
   https://docs.docker.com/get-started/
 ```
-# 3. nbidia-docker2
+# 3. install nvidia-docker2
 ```
  $ curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey |   sudo apt-key add -
  $ distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
@@ -38,11 +42,14 @@
 ```
  
 # 4. deepstream
- https://ngc.nvidia.com/catalog/containers/nvidia:deepstream
+ see also https://ngc.nvidia.com/catalog/containers/nvidia:deepstream.
 ```
-$ sudo docker pull nvcr.io/nvidia/deepstream:5.0.1-20.09-triton
-$ xhost +
-$ sudo docker run --gpus all -it --rm -v /tmp/.X11-unix:/tmp/.X11-unix --device /dev/video0:/dev/video0:mwr -e DISPLAY=$DISPLAY -w /opt/nvidia/deepstream/deepstream-5.0  nvcr.io/nvidia/deepstream:5.0.1-20.09-triton
+ $ sudo docker pull nvcr.io/nvidia/deepstream:5.0.1-20.09-triton
+ $ xhost +
+ $ sudo docker run --gpus all -it --rm -v /tmp/.X11-unix:/tmp/.X11-unix --device /dev/video0:/dev/video0:mwr -e DISPLAY=$DISPLAY -w /opt/nvidia/deepstream/deepstream-5.0  nvcr.io/nvidia/deepstream:5.0.1-20.09-triton
 
-root@db8c980a463f:/opt/nvidia/deepstream/deepstream-5.0# deepstream-app -c samples/configs/deepstream-app/source1_usb_dec_infer_resnet_int8.txt
+ ---in-container---
+ root@db8c980a463f:/opt/nvidia/deepstream/deepstream-5.0# deepstream-app -c samples/configs/deepstream-app/source1_usb_dec_infer_resnet_int8.txt
 ```
+
+ Web camera runs which runs at /dev/video0 and you can see yourself!!!
