@@ -66,7 +66,17 @@
   /workspace/tlt-experiments
   root@a65e47c7859e:/workspace/tlt-experiments# ls
   data  etc  input  kitti  model  output  sample  tlt-convert
-  root@1594d9b196fc:/workspace/tlt-experiments# ngc registry model download-version nvidia/tlt_facedetectir_vpruned_v1.0 --dest ./model 
+  root@5b2a2185c851:/workspace/tlt-experiments# ngc registry model download-version nvidia/tlt_facedetectir:pruned_v1.0 --dest ./model
+  Downloaded 9.09 MB in 1m 9s, Download speed: 134.76 KB/s               
+  ----------------------------------------------------
+  Transfer id: tlt_facedetectir_vpruned_v1.0 Download status: Completed.
+  Downloaded local path: /workspace/tlt-experiments/model/tlt_facedetectir_vpruned_v1.0
+  Total files downloaded: 3 
+  Total downloaded size: 9.09 MB
+  Started at: 2021-02-25 08:10:57.848917
+  Completed at: 2021-02-25 08:12:06.925858
+  Duration taken: 1m 9s
+  ----------------------------------------------------
 ``` 
  (2) tlt-converter from etlt-file to engine-file
  ```
