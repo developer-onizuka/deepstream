@@ -84,19 +84,23 @@
  -rw------- 1 root root  9528386 Feb 25 01:54 resnet18_facedetectir_pruned.etlt
  -rw-r--r-- 1 root root 23009028 Feb 25 06:05 resnet18_facedetectir_pruned.engine
 ```
- (3) in the container of deepstream
+ (3) copy pre-trained model to the container of deepstream
  ```
  $ xhost +
  $ sudo docker run --gpus all -it --rm -v /tmp/.X11-unix:/tmp/.X11-unix --device /dev/video0:/dev/video0:mwr -e DISPLAY=$DISPLAY -w /opt/nvidia/deepstream/deepstream-5.0  nvcr.io/nvidia/deepstream:5.0.1-20.09-triton
 
  ---in-container---
  root@2de88e2a99a3:/opt/nvidia/deepstream/deepstream-5.0# cp -pr /workspace/tlt-experiments/model/tlt_facedetectir_vpruned_v1.0 samples/models/
+ ```
+ (4) edit some files in the container of deepstream
+ ```
  root@2de88e2a99a3:/opt/nvidia/deepstream/deepstream-5.0# cd samples/configs/tlt_pretrained_models/
+ ```
+ edit 2 files below like attached files:
+   config_infer_primary_facedetectir.txt
+   deepstream_app_source1_facedetectir.txt
  
- 
- config_infer_primary_facedetectir.txt
- deepstream_app_source1_facedetectir.txt
- 
- 
- 
- root@db8c980a463f:/opt/nvidia/deepstream/deepstream-5.0# deepstream-app -c samples/configs/deepstream-app/source1_usb_dec_infer_resnet_int8.txt
+ (5) run deepstream-app
+```
+ root@2de88e2a99a3:/opt/nvidia/deepstream/deepstream-5.0# deepstream-app -c samples/configs/tlt_pretrained_models/deepstream_app_source1_facedetectir.txt
+```
