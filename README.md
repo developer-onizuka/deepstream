@@ -57,17 +57,23 @@
  # 5. deepstream on pre-trained model
   see also https://docs.nvidia.com/metropolis/TLT/tlt-getting-started-guide/text/deploying_to_deepstream.html#generating-an-engine-using-tlt-converter.
 
- (1) downloand pruned model
+ (1) downloand pruned model in container of nvcr.io/nvidia/tlt-streamanalytics:v3.0-dp-py3
 ```
   $ sudo docker run --gpus all -it -v /mnt/docker/tlt-experiments:/workspace/tlt-experiments -p 8888:8888 nvcr.io/nvidia/tlt-streamanalytics:v3.0-dp-py3 /bin/bash
-
+  
+ ---in-container---
   root@a65e47c7859e:/workspace/tlt-experiments# pwd
   /workspace/tlt-experiments
   root@a65e47c7859e:/workspace/tlt-experiments# ls
   data  etc  input  kitti  model  output  sample  tlt-convert
   root@1594d9b196fc:/workspace/tlt-experiments# ngc registry model download-version nvidia/tlt_peoplenet:unpruned_v2.1 --dest ./model 
 ``` 
- export ENGINE_PATH=tlt-experiments/model/tlt_facedetectir_vpruned_v1.0/resnet18_facedetectir_pruned.engine
- export MODEL_PATH=tlt-experiments/model/tlt_facedetectir_vpruned_v1.0/resnet18_facedetectir_pruned.etlt
- 
+ (2) tlt-converter from etlt-file to engine-file
+ ```
+ root@a65e47c7859e:/workspace# pwd
+ /workspace
+ root@a65e47c7859e:/workspace# export ENGINE_PATH=tlt-experiments/model/tlt_facedetectir_vpruned_v1.0/resnet18_facedetectir_pruned.engine
+ root@a65e47c7859e:/workspace# export MODEL_PATH=tlt-experiments/model/tlt_facedetectir_vpruned_v1.0/resnet18_facedetectir_pruned.etlt
+ root@a65e47c7859e:/workspace# tlt-converter -k tlt_encode -i nchw -d 3,544,960 -o output_bbox/BiasAdd,output_cov/Sigmoid -e $ENGINE_PATH -m 1 $MODEL_PATH
+```
  
