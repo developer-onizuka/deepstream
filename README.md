@@ -57,8 +57,9 @@
  # 5. deepstream with pre-trained model
   see also https://docs.nvidia.com/metropolis/TLT/tlt-getting-started-guide/text/deploying_to_deepstream.html#generating-an-engine-using-tlt-converter.
 
- (1) download pruned model in container of nvcr.io/nvidia/tlt-streamanalytics:v3.0-dp-py3
-```
+ (1) docker pull and download pruned model in container of nvcr.io/nvidia/tlt-streamanalytics:v3.0-dp-py3
+ ```
+  $ sudo docker pull nvcr.io/nvidia/tlt-streamanalytics:v3.0-dp-py3
   $ sudo docker run --gpus all -it -v /mnt/docker/tlt-experiments:/workspace/tlt-experiments -p 8888:8888 nvcr.io/nvidia/tlt-streamanalytics:v3.0-dp-py3 /bin/bash
   
  ---in-container---
