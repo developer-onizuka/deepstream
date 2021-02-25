@@ -54,7 +54,7 @@
 
  You can see yourself through Web camera running at /dev/video0 !!!
   
- # 5. deepstream on pre-trained model
+ # 5. deepstream with pre-trained model
   see also https://docs.nvidia.com/metropolis/TLT/tlt-getting-started-guide/text/deploying_to_deepstream.html#generating-an-engine-using-tlt-converter.
 
  (1) downloand pruned model in container of nvcr.io/nvidia/tlt-streamanalytics:v3.0-dp-py3
