@@ -53,3 +53,21 @@
 ```
 
  You can see yourself through Web camera running at /dev/video0 !!!
+  
+ # 5. deepstream on pre-trained model
+  see also https://docs.nvidia.com/metropolis/TLT/tlt-getting-started-guide/text/deploying_to_deepstream.html#generating-an-engine-using-tlt-converter.
+
+ (1) downloand pruned model
+```
+  $ sudo docker run --gpus all -it -v /mnt/docker/tlt-experiments:/workspace/tlt-experiments -p 8888:8888 nvcr.io/nvidia/tlt-streamanalytics:v3.0-dp-py3 /bin/bash
+
+  root@a65e47c7859e:/workspace/tlt-experiments# pwd
+  /workspace/tlt-experiments
+  root@a65e47c7859e:/workspace/tlt-experiments# ls
+  data  etc  input  kitti  model  output  sample  tlt-convert
+  root@1594d9b196fc:/workspace/tlt-experiments# ngc registry model download-version nvidia/tlt_peoplenet:unpruned_v2.1 --dest ./model 
+``` 
+ export ENGINE_PATH=tlt-experiments/model/tlt_facedetectir_vpruned_v1.0/resnet18_facedetectir_pruned.engine
+ export MODEL_PATH=tlt-experiments/model/tlt_facedetectir_vpruned_v1.0/resnet18_facedetectir_pruned.etlt
+ 
+ 
