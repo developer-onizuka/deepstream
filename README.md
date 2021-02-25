@@ -97,7 +97,7 @@
  (3) copy pre-trained model to the container of deepstream
  ```
  $ xhost +
- $ sudo docker run --gpus all -it --rm -v /tmp/.X11-unix:/tmp/.X11-unix --device /dev/video0:/dev/video0:mwr -e DISPLAY=$DISPLAY -w /opt/nvidia/deepstream/deepstream-5.0  nvcr.io/nvidia/deepstream:5.0.1-20.09-triton
+ $ sudo docker run --gpus all -it --rm -v /mnt/docker/tlt-experiments:/workspace/tlt-experiments -v /tmp/.X11-unix:/tmp/.X11-unix --device /dev/video0:/dev/video0:mwr -e DISPLAY=$DISPLAY -w /opt/nvidia/deepstream/deepstream-5.0  nvcr.io/nvidia/deepstream:5.0.1-20.09-triton
 
  ---in-container---
  root@2de88e2a99a3:/opt/nvidia/deepstream/deepstream-5.0# cp -pr /workspace/tlt-experiments/model/tlt_facedetectir_vpruned_v1.0 samples/models/
