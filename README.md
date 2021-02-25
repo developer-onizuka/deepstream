@@ -57,15 +57,17 @@
  # 5. deepstream with pre-trained model
   see also https://docs.nvidia.com/metropolis/TLT/tlt-getting-started-guide/text/deploying_to_deepstream.html#generating-an-engine-using-tlt-converter.
 
- (1) downloand pruned model in container of nvcr.io/nvidia/tlt-streamanalytics:v3.0-dp-py3
+ (1) download pruned model in container of nvcr.io/nvidia/tlt-streamanalytics:v3.0-dp-py3
 ```
   $ sudo docker run --gpus all -it -v /mnt/docker/tlt-experiments:/workspace/tlt-experiments -p 8888:8888 nvcr.io/nvidia/tlt-streamanalytics:v3.0-dp-py3 /bin/bash
   
  ---in-container---
   root@a65e47c7859e:/workspace/tlt-experiments# pwd
   /workspace/tlt-experiments
+
   root@a65e47c7859e:/workspace/tlt-experiments# ls
   data  etc  input  kitti  model  output  sample  tlt-convert
+
   root@5b2a2185c851:/workspace/tlt-experiments# ngc registry model download-version nvidia/tlt_facedetectir:pruned_v1.0 --dest ./model
   Downloaded 9.09 MB in 1m 9s, Download speed: 134.76 KB/s               
   ----------------------------------------------------
@@ -82,11 +84,15 @@
  ```
  root@a65e47c7859e:/workspace# pwd
  /workspace
+
  root@a65e47c7859e:/workspace# export ENGINE_PATH=tlt-experiments/model/tlt_facedetectir_vpruned_v1.0/resnet18_facedetectir_pruned.engine
  root@a65e47c7859e:/workspace# export MODEL_PATH=tlt-experiments/model/tlt_facedetectir_vpruned_v1.0/resnet18_facedetectir_pruned.etlt
+
  root@a65e47c7859e:/workspace# tlt-converter -k tlt_encode -i nchw -d 3,544,960 -o output_bbox/BiasAdd,output_cov/Sigmoid -e $ENGINE_PATH -m 1 $MODEL_PATH
  [INFO] Detected 1 inputs and 2 output network tensors.
+
  root@a65e47c7859e:/workspace# cd tlt-experiments/model/tlt_facedetectir_vpruned_v1.0/
+
  root@a65e47c7859e:/workspace/tlt-experiments/model/tlt_facedetectir_vpruned_v1.0# ls -trl
  total 31792
  -rw------- 1 root root        4 Feb 25 01:54 labels.txt
