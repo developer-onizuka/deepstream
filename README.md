@@ -41,7 +41,7 @@
  $ sudo systemctl restart docker
 ```
  
-# 4. deepstream
+# 4. deepstream test if it works well
  see also https://ngc.nvidia.com/catalog/containers/nvidia:deepstream.
 ```
  $ sudo docker pull nvcr.io/nvidia/deepstream:5.0.1-20.09-triton
