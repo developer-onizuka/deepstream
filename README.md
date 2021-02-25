@@ -60,7 +60,7 @@
  (1) docker pull and download pruned model in container of nvcr.io/nvidia/tlt-streamanalytics:v3.0-dp-py3
  ```
   $ sudo docker pull nvcr.io/nvidia/tlt-streamanalytics:v3.0-dp-py3
-  $ sudo docker run --gpus all -it -rm -v /mnt/docker/tlt-experiments:/workspace/tlt-experiments -p 8888:8888 nvcr.io/nvidia/tlt-streamanalytics:v3.0-dp-py3 /bin/bash
+  $ sudo docker run --gpus all -it --rm -v /mnt/docker/tlt-experiments:/workspace/tlt-experiments -p 8888:8888 nvcr.io/nvidia/tlt-streamanalytics:v3.0-dp-py3 /bin/bash
   
  ---in-container---
   root@a65e47c7859e:/workspace/tlt-experiments# pwd
