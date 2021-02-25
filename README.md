@@ -96,10 +96,11 @@
  ```
  root@2de88e2a99a3:/opt/nvidia/deepstream/deepstream-5.0# cd samples/configs/tlt_pretrained_models/
  ```
- edit 2 files below like attached files:
+ Edit 2 files below like attached files:
+ ```
    config_infer_primary_facedetectir.txt
    deepstream_app_source1_facedetectir.txt
- 
+ ```
  (5) run deepstream-app
 ```
  root@2de88e2a99a3:/opt/nvidia/deepstream/deepstream-5.0# deepstream-app -c samples/configs/tlt_pretrained_models/deepstream_app_source1_facedetectir.txt
