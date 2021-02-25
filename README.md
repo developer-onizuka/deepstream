@@ -66,7 +66,7 @@
   /workspace/tlt-experiments
   root@a65e47c7859e:/workspace/tlt-experiments# ls
   data  etc  input  kitti  model  output  sample  tlt-convert
-  root@1594d9b196fc:/workspace/tlt-experiments# ngc registry model download-version nvidia/tlt_peoplenet:unpruned_v2.1 --dest ./model 
+  root@1594d9b196fc:/workspace/tlt-experiments# ngc registry model download-version nvidia/tlt_facedetectir_vpruned_v1.0 --dest ./model 
 ``` 
  (2) tlt-converter from etlt-file to engine-file
  ```
